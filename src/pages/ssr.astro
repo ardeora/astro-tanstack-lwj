@@ -8,7 +8,6 @@ import { SSRStats } from '../components/ssr/SSRStats';
 import '../styles/global.css';
 
 const bulbasaurStats = await getStats(1);
-const pokemon = await getPokemon(1);
 ---
 
 <html lang="en">
@@ -49,7 +48,7 @@ const pokemon = await getPokemon(1);
 
 
 			<div class="container mx-auto px-4 mt-2 max-w-4xl flex flex-col gap-8">
-				<SSRName pokemon={pokemon} client:load />
+				<!-- <SSRName pokemon={pokemon} client:load /> -->
 				<SSRStats stats={bulbasaurStats} client:load />
 			</div>
 		</main>

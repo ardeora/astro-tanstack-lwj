@@ -15,7 +15,6 @@ import { createLeadingZero } from "../../utils/fns";
 /** A counter written with Solid */
 export function SSRStats(props: {
   stats: {
-    name: string;
     value: number;
     label: string;
   }[];

@@ -15,6 +15,12 @@ export interface Pokemon extends Omit<IPokemon, "sprites"> {
 
 export const getPokemon = async (id: number) => {
   const pokemon: any = await PokeAPI.Pokemon.resolve(id);
+
+  pokemon.stats.forEach((stat: any) => {
+    stat.base_stat = Math.round((stat.base_stat / 150) * 100);
+    stat.stat.name = getStatLabel(stat.stat.name);
+  });
+
   return pokemon as Pokemon;
 };
 
@@ -90,7 +96,6 @@ const getStatLabel = (name: string) => {
 export const getStats = async (id: number) => {
   const pokemon = await PokeAPI.Pokemon.resolve(id);
   return pokemon.stats.map((stat) => ({
-    name: stat.stat.name,
     value: Math.round((stat.base_stat / 150) * 100),
     label: getStatLabel(stat.stat.name),
   }));

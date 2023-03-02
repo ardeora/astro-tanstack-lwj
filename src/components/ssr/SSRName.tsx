@@ -10,20 +10,20 @@ import { useStore } from "@nanostores/solid";
 export function SSRName(props: { pokemon: Pokemon }) {
   const count = useStore(counter);
 
-  const pokeQuery = createQuery(
-    () => ({
-      queryKey: ["pokemon", count()],
-      queryFn: () => getPokemon(count()),
-      placeholderData: (prev) => prev,
-      initialData: () => (count() === 1 ? props.pokemon : undefined),
-      staleTime: 1000 * 20,
-    }),
-    () => client
-  );
+  // const pokeQuery = createQuery(
+  //   () => ({
+  //     queryKey: ["pokemon", count()],
+  //     queryFn: () => getPokemon(count()),
+  //     placeholderData: (prev) => prev,
+  //     initialData: () => (count() === 1 ? props.pokemon : undefined),
+  //     staleTime: 1000 * 20,
+  //   }),
+  //   () => client
+  // );
 
   return (
     <h1 class="text-8xl font-fun font-bold text-amber-50">
-      {pokeQuery.data.name}
+      {/* {pokeQuery.data.name} */}
     </h1>
   );
 }
