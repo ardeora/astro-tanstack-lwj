@@ -8,9 +8,17 @@ import { useStore } from "@nanostores/solid";
 
 /** A counter written with Solid */
 export function SolidCounter() {
-  const [count, setCount] = createSignal(0);
-  const add = () => setCount(count() + 1);
-  const subtract = () => setCount(count() - 1);
+  const count = useStore(counter);
+  const add = () => counter.set(count() + 1);
+  const subtract = () => counter.set(count() - 1);
+
+  const pokemonQuery = createQuery(
+    () => ({
+      queryKey: ["pokemon", count()],
+      queryFn: () => getPokemon(count()),
+    }),
+    () => client
+  );
 
   return (
     <div class="min-h-96 overflow-hidden flex flex-col border shadow-md flex-1 rounded-xl bg-white p-4">
@@ -36,7 +44,7 @@ export function SolidCounter() {
         </button>
       </div>
 
-      {/* <pre>{JSON.stringify(pokemonQuery.data?.name, null, 2)}</pre> */}
+      <pre>{JSON.stringify(pokemonQuery.data?.name, null, 2)}</pre>
       <CorgiList count={count()} />
     </div>
   );

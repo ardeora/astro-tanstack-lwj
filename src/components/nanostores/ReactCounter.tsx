@@ -7,10 +7,17 @@ import { counter, client } from "./store";
 
 /** A counter written with React */
 export function ReactCounter() {
-  const [count, setCount] = useState(0);
+  const count = useStore(counter);
+  const add = () => counter.set(count + 1);
+  const subtract = () => counter.set(count - 1);
 
-  const add = () => setCount(count + 1);
-  const subtract = () => setCount(count - 1);
+  const pokemonQuery = useQuery(
+    {
+      queryKey: ["pokemon", count],
+      queryFn: () => getPokemon(count),
+    },
+    client
+  );
 
   return (
     <div className="min-h-96 overflow-hidden flex flex-col border shadow-md flex-1 rounded-xl bg-white p-4">
@@ -36,11 +43,11 @@ export function ReactCounter() {
         </button>
       </div>
 
-      {/* <pre>{JSON.stringify(pokemonQuery.data?.name, null, 2)}</pre> */}
+      <pre>{JSON.stringify(pokemonQuery.data?.name, null, 2)}</pre>
 
       <CorgiList count={count} />
 
-      {/* <ReactQueryDevtools queryClient={client} /> */}
+      <ReactQueryDevtools queryClient={client} />
     </div>
   );
 }
