@@ -15,7 +15,7 @@ export function SSRName(props: { pokemon: Pokemon }) {
   //     queryKey: ["pokemon", count()],
   //     queryFn: () => getPokemon(count()),
   //     placeholderData: (prev) => prev,
-  //     initialData: () => (count() === 1 ? props.pokemon : undefined),
+  //     initialData: props.pokemon,
   //     staleTime: 1000 * 20,
   //   }),
   //   () => client
