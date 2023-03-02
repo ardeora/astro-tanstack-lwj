@@ -103,12 +103,11 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
 import { useStore } from "@nanostores/vue";
-import { counter, client } from "../utils";
-import { createLeadingZero, properCase } from "../utils/fns";
+import { counter, client } from "./store";
+import { createLeadingZero, properCase } from "../../utils/fns";
 import { useQuery, QueryClient } from "@tanstack/vue-query";
-import { getColorPalette, getEvolutionChain } from "../api/pokemon";
+import { getColorPalette, getEvolutionChain } from "../../api/pokemon";
 
 export default {
   setup() {

@@ -2,11 +2,11 @@
 A counter written with Svelte
 -->
 <script lang="ts">
-	import { client, counter as count } from '../utils';
+	import { client, counter as count } from './store';
 	import { createQuery } from '@tanstack/svelte-query'
 	import { fade } from 'svelte/transition';
-  import { getColorPalette, getTypesAndWeaknesses } from '../api/pokemon';
-  import { createLeadingZero } from '../utils/fns';
+  import { getColorPalette, getTypesAndWeaknesses } from '../../api/pokemon';
+  import { createLeadingZero } from '../../utils/fns';
 
 	$: query = createQuery({
     queryKey: ["types", $count],

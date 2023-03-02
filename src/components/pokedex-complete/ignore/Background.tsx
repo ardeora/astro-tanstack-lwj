@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, ReactNode } from "react";
-import { getPokemon, getColorPalette } from "../api/pokemon";
-import { client, counter } from "../utils";
+import { getPokemon, getColorPalette } from "../../../api/pokemon";
+import { client, counter } from "../store";
 import { QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { useStore } from "@nanostores/react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";

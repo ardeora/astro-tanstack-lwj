@@ -1,11 +1,11 @@
 /** @jsxImportSource solid-js */
 
 import { createSignal, For, Index } from "solid-js";
-import { getPokemon, getColorPalette, getStats } from "../api/pokemon";
-import { client, counter } from "../utils";
+import { getPokemon, getColorPalette, getStats } from "../../api/pokemon";
+import { client, counter } from "./store";
 import { createQuery } from "@tanstack/solid-query";
 import { useStore } from "@nanostores/solid";
-import { createLeadingZero } from "../utils/fns";
+import { createLeadingZero } from "../../utils/fns";
 
 /** A counter written with Solid */
 export function SolidStats() {

@@ -1,11 +1,21 @@
-import type { IEvolutionChain } from "pokeapi-typescript";
+import type { IEvolutionChain, IPokemon } from "pokeapi-typescript";
 import PokeAPI from "pokeapi-typescript";
 import ColorThief from "colorthief";
 import { properCase } from "../utils/fns";
 
+interface Pokemon extends Omit<IPokemon, "sprites"> {
+  sprites: {
+    other: {
+      "official-artwork": {
+        front_default: string;
+      };
+    };
+  };
+}
+
 export const getPokemon = async (id: number) => {
-  const pokemon = await PokeAPI.Pokemon.resolve(id);
-  return pokemon;
+  const pokemon: any = await PokeAPI.Pokemon.resolve(id);
+  return pokemon as Pokemon;
 };
 
 interface IChainItem {
@@ -89,10 +99,9 @@ export const getStats = async (id: number) => {
 export async function getColorPalette(
   id: number
 ): Promise<[number, number, number]> {
-  const pokemon = await PokeAPI.Pokemon.resolve(id);
+  const pokemon = await getPokemon(id);
   const colorThief = new ColorThief();
 
-  // @ts-expect-error
   const img_url = pokemon.sprites.other["official-artwork"].front_default;
 
   const img = new Image();

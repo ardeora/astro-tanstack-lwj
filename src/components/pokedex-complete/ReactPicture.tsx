@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo, ReactNode } from "react";
-import { getPokemon, getColorPalette } from "../api/pokemon";
-import { client, counter } from "../utils";
+import { getPokemon, getColorPalette } from "../../api/pokemon";
+import { client, counter } from "./store";
 import { useQuery } from "@tanstack/react-query";
 import { useStore } from "@nanostores/react";
-import { createLeadingZero } from "../utils/fns";
+import { createLeadingZero } from "../../utils/fns";
 
 /** A counter written with React */
 export function ReactPicture() {
@@ -45,7 +45,6 @@ export function ReactPicture() {
         {data && (
           <img
             className="absolute inset-0 w-full h-full object-contain object-center"
-            // @ts-ignore
             src={data.sprites.other["official-artwork"].front_default}
             alt={data.name}
           />
