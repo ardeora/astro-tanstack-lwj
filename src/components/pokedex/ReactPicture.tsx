@@ -11,6 +11,14 @@ export function ReactPicture() {
   const add = () => counter.set(counter.get() + 1);
   const subtract = () => counter.set(counter.get() - 1);
 
+  const pokemonQuery = useQuery(
+    {
+      queryKey: ["pokemon", count],
+      queryFn: () => getPokemon(count),
+    },
+    client
+  );
+
   return (
     <div className="bg-white/70 flex flex-col p-3 aspect-square backdrop-blur-md rounded-xl h-72">
       <Header />
