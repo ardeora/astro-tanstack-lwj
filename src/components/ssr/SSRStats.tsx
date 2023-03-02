@@ -29,7 +29,7 @@ export function SSRStats(props: {
       queryFn: () => getStats(count()),
       placeholderData: (prev) => prev,
       initialData: () => (count() === 1 ? props.stats : undefined),
-      staleTime: 1000 * 2,
+      staleTime: 1000 * 60,
     }),
     () => client
   );
