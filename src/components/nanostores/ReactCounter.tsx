@@ -45,6 +45,16 @@ export function ReactCounter() {
   );
 }
 
+const usePokemon = (count: number) => {
+  return useQuery(
+    {
+      queryKey: ["pokemon", count],
+      queryFn: () => getPokemon(count),
+    },
+    client
+  );
+};
+
 function CorgiList({ count }: { count: number }) {
   return (
     <div className="flex gap-3 flex-wrap mt-4">

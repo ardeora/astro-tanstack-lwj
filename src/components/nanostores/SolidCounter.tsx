@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { createMemo, createSignal, Index } from "solid-js";
+import { Accessor, createMemo, createSignal, Index } from "solid-js";
 import { getPokemon } from "../../api/pokemon";
 import { client, counter } from "./store";
 import { createQuery } from "@tanstack/solid-query";
@@ -41,6 +41,16 @@ export function SolidCounter() {
     </div>
   );
 }
+
+const usePokemon = (count: Accessor<number>) => {
+  return createQuery(
+    () => ({
+      queryKey: ["pokemon", count()],
+      queryFn: () => getPokemon(count()),
+    }),
+    () => client
+  );
+};
 
 function CorgiList(props: { count: number }) {
   const countArray = createMemo(() =>
