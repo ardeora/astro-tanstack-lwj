@@ -108,7 +108,7 @@ import { useStore } from "@nanostores/vue";
 import { counter, client } from "../utils";
 import { createLeadingZero, properCase } from "../utils/fns";
 import { useQuery, QueryClient } from "@tanstack/vue-query";
-import { getEvolutionChain } from "../api/pokemon";
+import { getColorPalette, getEvolutionChain } from "../api/pokemon";
 
 export default {
   setup() {
@@ -132,7 +132,7 @@ export default {
     const { data: color } = useQuery(
       {
         queryKey: ["color", count],
-        queryFn: () => getEvolutionChain(count.value),
+        queryFn: () => getColorPalette(count.value),
         placeholderData: (prev) => prev,
         select(data) {
           return `hsl(${data[0]}, 50%, 25%)`;

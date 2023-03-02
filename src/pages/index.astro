@@ -1,19 +1,7 @@
 ---
 // Style Imports
 import '../styles/global.css';
-import { getColorPalette, getEvolutionChain, getPokemon, getStats, getTypesAndWeaknesses } from '../api/pokemon';
-import { Background } from '../components/Background';
-import { ReactPicture } from '../components/ReactPicture';
-import { PokedexHeader } from '../components/PokedexHeader';
-import { SolidStats } from '../components/SolidStats';
-import Svelte from '../components/Svelte.svelte';
-import VueEvolution from '../components/VueEvolution.vue';
 
-const id = 7;
-const pokemon = await getPokemon(id);
-const chain = await getEvolutionChain(id);
-const types = await getTypesAndWeaknesses(id);
-const stats = await getStats(id);
 ---
 
 <html lang="en">
@@ -26,24 +14,132 @@ const stats = await getStats(id);
 	</head>
 	<body>
 		<main class="mb-24">
-			<h1 class="text-3xl font-bold text-center opacity-70 mt-4" >Astro + TanStack Query</h1>
-			<h2 class="text-xl font-semibold text-center opacity-60 mt-2">Pokédex Example</h2>
+			<div class="bg-[#201d29] h-96 flex flex-col items-center justify-center">
+				<div class="pb-8">
+					<h1 class="font-bold text-center font-quicksand text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#ff87d4] via-[#ffe742] to-[#87fffb]">Learn With Jason</h1>
+					<h2 class="text-amber-50 text-2xl text-center mt-3">Sharing state between multiple UI libraries with Astro</h2>
+				</div>
 
-			<PokedexHeader client:only="solid" />
+				<div class="flex gap-4 items-center pt-4">
+					<div class="bg-white p-2 rounded-lg">
+						<svg width="56" height="56" viewBox="0 0 1280 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M815.039 94.6439C824.758 106.709 829.714 122.99 839.626 155.553L1056.17 866.901C976.107 825.368 889.072 795.413 797.281 779.252L656.29 302.798C653.983 295.002 646.822 289.654 638.693 289.654C630.542 289.654 623.368 295.03 621.08 302.853L481.795 779.011C389.579 795.1 302.146 825.109 221.741 866.793L439.347 155.388L439.348 155.388C449.291 122.882 454.262 106.629 463.982 94.5853C472.562 83.9531 483.723 75.6958 496.4 70.6002C510.76 64.8284 527.756 64.8284 561.749 64.8284H717.174C751.212 64.8284 768.23 64.8284 782.603 70.6123C795.292 75.7184 806.459 83.9923 815.039 94.6439Z" fill="url(#paint0_linear_709_110)"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M840.951 900.754C805.253 931.279 734.002 952.097 651.929 952.097C551.197 952.097 466.767 920.737 444.363 878.561C436.354 902.732 434.558 930.396 434.558 948.068C434.558 948.068 429.281 1034.84 489.636 1095.2C489.636 1063.86 515.042 1038.46 546.381 1038.46C600.097 1038.46 600.036 1085.32 599.987 1123.34C599.986 1124.48 599.984 1125.61 599.984 1126.73C599.984 1184.44 635.255 1233.91 685.416 1254.77C677.924 1239.36 673.721 1222.05 673.721 1203.77C673.721 1148.73 706.034 1128.23 743.588 1104.41L743.588 1104.41C773.469 1085.46 806.668 1064.41 829.548 1022.17C841.486 1000.13 848.265 974.893 848.265 948.068C848.265 931.573 845.702 915.676 840.951 900.754Z" fill="#FF5D01"/>
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M840.951 900.754C805.253 931.279 734.002 952.097 651.929 952.097C551.197 952.097 466.767 920.737 444.363 878.561C436.354 902.732 434.558 930.396 434.558 948.068C434.558 948.068 429.281 1034.84 489.636 1095.2C489.636 1063.86 515.042 1038.46 546.381 1038.46C600.097 1038.46 600.036 1085.32 599.987 1123.34C599.986 1124.48 599.984 1125.61 599.984 1126.73C599.984 1184.44 635.255 1233.91 685.416 1254.77C677.924 1239.36 673.721 1222.05 673.721 1203.77C673.721 1148.73 706.034 1128.23 743.588 1104.41L743.588 1104.41C773.469 1085.46 806.668 1064.41 829.548 1022.17C841.486 1000.13 848.265 974.893 848.265 948.068C848.265 931.573 845.702 915.676 840.951 900.754Z" fill="url(#paint1_linear_709_110)"/>
+							<defs>
+							<linearGradient id="paint0_linear_709_110" x1="882.997" y1="27.1132" x2="638.955" y2="866.902" gradientUnits="userSpaceOnUse">
+							<stop stop-color="#000014"/>
+							<stop offset="1" stop-color="#150426"/>
+							</linearGradient>
+							<linearGradient id="paint1_linear_709_110" x1="1001.68" y1="652.45" x2="790.326" y2="1094.91" gradientUnits="userSpaceOnUse">
+							<stop stop-color="#FF1639"/>
+							<stop offset="1" stop-color="#FF1639" stop-opacity="0"/>
+							</linearGradient>
+							</defs>
+						</svg>
+					</div>
+					<span class="text-amber-50 text-3xl font-medium">+</span>
+					<div class="relative rounded-lg bg-green-300 h-[4.5rem] w-[4.5rem] overflow-hidden">
+						<img src="./tanstack.png" class="absolute inset-0 h-full w-full object-cover" alt="TanStack Logo" />
+					</div>
+					<span class="text-amber-50 text-3xl font-medium">+</span>
+					<div class="bg-black p-2 rounded-lg">
+						<svg width="56" height="56" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="250" cy="250" r="250" fill="#000"/><path fill-rule="evenodd" clip-rule="evenodd" d="M269.463 385 122 281.746l86.384-33.697 126.397 88.503L269.463 385zM231.036 115l147.463 103.254-86.384 33.697-126.397-88.503L231.036 115z" fill="#fff"/></svg>
+					</div>
+				</div>
+			</div>
 			
-			<div class="container flex gap-4 items-center px-8 mt-8 justify-between mx-auto max-w-5xl">
-				<ReactPicture client:only="react" />
-				<SolidStats client:only="solid" />
+			<div class="container max-w-xl mt-12 mx-auto">
+				<p class="font-semibold mb-4">Links</p>
+				<div class="mx-auto flex flex-col gap-3 items-center justify-center">
+					<div class="h-20 w-full rounded-md bg-gradient-to-r from-[#ff87d4] via-[#ffe742] to-[#87fffb] p-1.5">
+						<a href="./nanostores" class="flex gap-2 h-full w-full p-2 hover:bg-amber-50 bg-white back rounded-sm">
+							<div class="flex items-center">
+								<div class="bg-black h-[3rem] w-[3rem] flex items-center justify-center rounded-full">
+									<svg width="42" height="42" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="250" cy="250" r="250" fill="#000"/><path fill-rule="evenodd" clip-rule="evenodd" d="M269.463 385 122 281.746l86.384-33.697 126.397 88.503L269.463 385zM231.036 115l147.463 103.254-86.384 33.697-126.397-88.503L231.036 115z" fill="#fff"/></svg>
+								</div>
+							</div>
+							<div class="flex-1 pt-0.5 flex flex-col">
+								<p class="font-semibold text-black/80">Nanostores + Query Introduction</p>
+								<p class="text-sm leading-snug">A gentle introduction to sharing state across UI components</p>
+							</div>
+						</a>
+					</div>
+					<div class="h-20 w-full rounded-md bg-gradient-to-r from-[#ff87d4] via-[#ffe742] to-[#87fffb] p-1.5">
+						<a href="./pokedex" class="flex gap-2 h-full w-full p-2 hover:bg-amber-50 bg-white back rounded-sm">
+							<div class="flex items-center">
+								<div class="bg-[#FF1C1C]/60 h-[3rem] w-[3rem] flex items-center justify-center rounded-full">
+									<svg height="42" width="42" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Pokéball" x="0px" y="0px" viewBox="0 0 595.3 594.1" style="enable-background:new 0 0 595.3 594.1;" xml:space="preserve">
+										<style type="text/css">
+											.st0{fill:#FFFFFF;}
+											.st1{fill:#DFDFDF;}
+											.st2{fill:#FF1C1C;}
+											.st3{fill:#DF1818;}
+										</style>
+										<g id="Pokéball_1_">
+											<g id="Colours">
+												<path id="Down" class="st0" d="M297.6,380.9c-40.4,0-74.1-28.6-82.1-66.6H81.1c9.5,110.5,102.2,197.2,215.1,197.2    s205.7-86.7,215.1-197.2H379.7C371.7,352.4,338,380.9,297.6,380.9z"/>
+												<path id="Shadow_Down" class="st1" d="M345.6,505.9c89.6-21,157.7-97.7,165.7-191.6h-53C453,399.5,408.3,471.7,345.6,505.9z"/>
+												<path id="Center" class="st0" d="M347.1,297L347.1,297C347,297,347,297,347.1,297c-0.1-6.1-1.2-11.9-3.2-17.3    c-7-18.8-25.1-32.1-46.3-32.1s-39.3,13.4-46.3,32.1c-2,5.4-3.1,11.2-3.1,17.3c0,0,0,0,0,0h0.1c0,0,0,0,0,0    c0,6.1,1.1,11.9,3.1,17.3c7,18.8,25.1,32.1,46.3,32.1c21.2,0,39.3-13.4,46.3-32.1C346,309,347.1,303.1,347.1,297    C347.1,297,347.1,297,347.1,297z"/>
+												<path id="Up" class="st2" d="M297.7,213.2c40.4,0,74.1,28.6,82.1,66.6h134.4C504.7,169.2,412,82.5,299,82.5S93.4,169.2,83.9,279.7    h131.7C223.6,241.7,257.3,213.2,297.7,213.2z"/>
+												<path id="Shadow_Up" class="st3" d="M458.3,279.7h55.8c-8.2-95.5-78.6-173.3-170.5-192.6C407.4,120.8,452.9,193.7,458.3,279.7z"/>
+											</g>
+											<path id="Line" d="M299,82.5c113,0,205.7,86.7,215.1,197.2H379.7c-8-38-41.7-66.6-82.1-66.6c-40.4,0-74.1,28.6-82.1,66.6H83.9   C93.4,169.2,186.1,82.5,299,82.5z M343.9,279.7c2,5.4,3.1,11.2,3.1,17.3c0,0,0,0,0,0h0.1c0,0,0,0,0,0c0,6.1-1.1,11.9-3.1,17.3   c-7,18.8-25.1,32.1-46.3,32.1c-21.2,0-39.3-13.4-46.3-32.1c-2-5.4-3.1-11.2-3.1-17.3c0,0,0,0,0,0h-0.1c0,0,0,0,0,0   c0-6.1,1.1-11.9,3.1-17.3c7-18.8,25.1-32.1,46.3-32.1S336.9,261,343.9,279.7z M296.2,511.6c-113,0-205.7-86.7-215.1-197.2h134.4   c8,38,41.7,66.6,82.1,66.6s74.1-28.6,82.1-66.6h131.7C501.9,424.8,409.2,511.6,296.2,511.6z M297.6,41.3   C156.4,41.3,41.9,155.8,41.9,297s114.5,255.7,255.7,255.7S553.4,438.3,553.4,297S438.9,41.3,297.6,41.3z"/>
+										</g>
+									</svg>
+								</div>
+							</div>
+							<div class="flex-1 pt-0.5 flex flex-col">
+								<p class="font-semibold text-black/80">Pokedex Kitchen Sink</p>
+								<p class="text-sm leading-snug">See framework agnostic TanStack Query in full action</p>
+							</div>
+						</a>
+					</div>
+					<div class="h-20 w-full rounded-md bg-gradient-to-r from-[#ff87d4] via-[#ffe742] to-[#87fffb] p-1.5">
+						<a href="./pokedex" class="flex gap-2 h-full w-full p-2 hover:bg-amber-50 bg-white back rounded-sm">
+							<div class="flex items-center">
+								<div class="bg-[#6d28d9]/50 h-[3rem] w-[3rem] flex items-center justify-center rounded-full">
+									<svg height="42" width="42" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Pokéball" x="0px" y="0px" viewBox="0 0 595.3 594.1" style="enable-background:new 0 0 595.3 594.1;" xml:space="preserve">
+										<style type="text/css">
+											.st0{fill:#FFFFFF;}
+											.st1{fill:#DFDFDF;}
+											.st2-master{fill:#6d28d9;}
+											.st3-master{fill:#5b21b6;}
+										</style>
+										<g id="Pokéball_1_">
+											<g id="Colours">
+												<path id="Down" class="st0" d="M297.6,380.9c-40.4,0-74.1-28.6-82.1-66.6H81.1c9.5,110.5,102.2,197.2,215.1,197.2    s205.7-86.7,215.1-197.2H379.7C371.7,352.4,338,380.9,297.6,380.9z"/>
+												<path id="Shadow_Down" class="st1" d="M345.6,505.9c89.6-21,157.7-97.7,165.7-191.6h-53C453,399.5,408.3,471.7,345.6,505.9z"/>
+												<path id="Center" class="st0" d="M347.1,297L347.1,297C347,297,347,297,347.1,297c-0.1-6.1-1.2-11.9-3.2-17.3    c-7-18.8-25.1-32.1-46.3-32.1s-39.3,13.4-46.3,32.1c-2,5.4-3.1,11.2-3.1,17.3c0,0,0,0,0,0h0.1c0,0,0,0,0,0    c0,6.1,1.1,11.9,3.1,17.3c7,18.8,25.1,32.1,46.3,32.1c21.2,0,39.3-13.4,46.3-32.1C346,309,347.1,303.1,347.1,297    C347.1,297,347.1,297,347.1,297z"/>
+												<path id="Up" class="st2-master" d="M297.7,213.2c40.4,0,74.1,28.6,82.1,66.6h134.4C504.7,169.2,412,82.5,299,82.5S93.4,169.2,83.9,279.7    h131.7C223.6,241.7,257.3,213.2,297.7,213.2z"/>
+												<path id="Shadow_Up" class="st3-master" d="M458.3,279.7h55.8c-8.2-95.5-78.6-173.3-170.5-192.6C407.4,120.8,452.9,193.7,458.3,279.7z"/>
+											</g>
+											<path id="Line" d="M299,82.5c113,0,205.7,86.7,215.1,197.2H379.7c-8-38-41.7-66.6-82.1-66.6c-40.4,0-74.1,28.6-82.1,66.6H83.9   C93.4,169.2,186.1,82.5,299,82.5z M343.9,279.7c2,5.4,3.1,11.2,3.1,17.3c0,0,0,0,0,0h0.1c0,0,0,0,0,0c0,6.1-1.1,11.9-3.1,17.3   c-7,18.8-25.1,32.1-46.3,32.1c-21.2,0-39.3-13.4-46.3-32.1c-2-5.4-3.1-11.2-3.1-17.3c0,0,0,0,0,0h-0.1c0,0,0,0,0,0   c0-6.1,1.1-11.9,3.1-17.3c7-18.8,25.1-32.1,46.3-32.1S336.9,261,343.9,279.7z M296.2,511.6c-113,0-205.7-86.7-215.1-197.2h134.4   c8,38,41.7,66.6,82.1,66.6s74.1-28.6,82.1-66.6h131.7C501.9,424.8,409.2,511.6,296.2,511.6z M297.6,41.3   C156.4,41.3,41.9,155.8,41.9,297s114.5,255.7,255.7,255.7S553.4,438.3,553.4,297S438.9,41.3,297.6,41.3z"/>
+										</g>
+									</svg>
+								</div>
+							</div>
+							<div class="flex-1 pt-0.5 flex flex-col">
+								<p class="font-semibold text-black/80">Pokedex Completed</p>
+								<p class="text-sm leading-snug">Completed example of the kitchen sink demo in case time runs out</p>
+							</div>
+						</a>
+					</div>
+					<div class="h-20 w-full rounded-md bg-gradient-to-r from-[#ff87d4] via-[#ffe742] to-[#87fffb] p-1.5">
+						<a href="./pokedex" class="flex gap-2 h-full w-full p-2 hover:bg-amber-50 bg-white back rounded-sm">
+							<div class="flex items-center">
+								<div class="bg-[#6d28d9]/50 h-[3rem] w-[3rem] flex items-center justify-center relative overflow-hidden rounded-full">
+									<img src="./tanstack.png" class="absolute inset-0 h-full w-full object-cover" alt="TanStack Logo" />
+								</div>
+							</div>
+							<div class="flex-1 pt-0.5 flex flex-col">
+								<p class="font-semibold text-black/80">TanStack Query + Astro SSR</p>
+								<p class="text-sm leading-snug">Server render queries w Query v5</p>
+							</div>
+						</a>
+					</div>
+				</div>
 			</div>
-
-			<div class="container flex gap-4 items-center px-8 mt-4 justify-between mx-auto max-w-5xl">
-				<Svelte client:only="svelte">
-				</Svelte>
-				<VueEvolution client:only="vue" />
-				
-			</div>
-			<Background client:only="react" />
-				
 		</main>
 	</body>
 </html>

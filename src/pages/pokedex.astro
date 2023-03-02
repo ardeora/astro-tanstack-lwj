@@ -1,0 +1,51 @@
+---
+// Style Imports
+import '../styles/global.css';
+import { getColorPalette, getEvolutionChain, getPokemon, getStats, getTypesAndWeaknesses } from '../api/pokemon';
+import { Background } from '../components/Background';
+import { ReactPicture } from '../components/ReactPicture';
+import { PokedexHeader } from '../components/PokedexHeader';
+import { SolidStats } from '../components/SolidStats';
+import Svelte from '../components/Svelte.svelte';
+import VueEvolution from '../components/VueEvolution.vue';
+
+const id = 7;
+const pokemon = await getPokemon(id);
+const chain = await getEvolutionChain(id);
+const types = await getTypesAndWeaknesses(id);
+const stats = await getStats(id);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="https://use.typekit.net/tij0xuz.css">
+	</head>
+	<body>
+		<main class="mb-24">
+			<a href="../">
+				<h1 class="text-3xl font-bold text-center opacity-70 mt-4" >Astro + TanStack Query</h1>
+				<h2 class="text-xl font-semibold text-center opacity-60 mt-2">Pokédex Example</h2>
+			</a>
+
+			<PokedexHeader client:only="solid" />
+			
+			<div class="container flex gap-4 items-center px-8 mt-8 justify-between mx-auto max-w-5xl">
+				<ReactPicture client:only="react" />
+				<SolidStats client:only="solid" />
+			</div>
+
+			<div class="container flex gap-4 items-center px-8 mt-4 justify-between mx-auto max-w-5xl">
+				<Svelte client:only="svelte">
+				</Svelte>
+				<VueEvolution client:only="vue" />
+				
+			</div>
+			<Background client:only="react" />
+				
+		</main>
+	</body>
+</html>

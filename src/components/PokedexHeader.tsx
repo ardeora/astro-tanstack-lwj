@@ -23,7 +23,9 @@ export function PokedexHeader() {
   return (
     <>
       <div class="container flex items-center px-8 mt-8 justify-between mx-auto max-w-5xl">
-        <p class="text-2xl opacity-70 font-semibold">Pokémon</p>
+        <p class="text-2xl opacity-70 font-semibold flex gap-2 items-center">
+          Pokémon
+        </p>
         <p class="text-2xl opacity-70 font-semibold">
           #{createLeadingZero(count())}
         </p>

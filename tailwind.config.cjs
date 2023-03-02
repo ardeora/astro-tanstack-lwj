@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         fun: ["ruddy", "sans-serif"],
+        quicksand: ["quicksand", "sans-serif"],
       },
     },
   },
