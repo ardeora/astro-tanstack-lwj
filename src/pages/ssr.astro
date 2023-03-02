@@ -1,0 +1,57 @@
+---
+// Style Imports
+
+import { getPokemon, getStats } from '../api/pokemon';
+import { Devtools } from '../components/ssr/Devtools';
+import { SSRName } from '../components/ssr/SSRName';
+import { SSRStats } from '../components/ssr/SSRStats';
+import '../styles/global.css';
+
+const bulbasaurStats = await getStats(1);
+const pokemon = await getPokemon(1);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="https://use.typekit.net/tij0xuz.css">
+	</head>
+	<body>
+		<Devtools client:only="react" />
+		<main class="mb-24 relative">
+			<div class="bg-[#201d29] top-0 absolute w-full -z-10 h-[420px] flex flex-col items-center justify-center"></div>
+			<div class="container max-w-4xl mx-auto text-amber-50/80 pt-20">
+				<a href="../" class="flex gap-1 items-center">
+					<svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 18L9 12L15 6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+					Back
+				</a>
+			</div>
+			<div class="pb-8 flex justify-center">
+				<h1 class="font-bold leading-normal text-center font-quicksand text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#ff87d4] via-[#ffe742] to-[#87fffb]">TanStack Query SSR</h1>
+			</div>
+
+
+			<div class="container mx-auto px-4 mt-2 max-w-4xl flex flex-col gap-8">
+				<SSRName pokemon={pokemon} client:load />
+				<SSRStats stats={bulbasaurStats} client:load />
+			</div>
+		</main>
+	</body>
+</html>

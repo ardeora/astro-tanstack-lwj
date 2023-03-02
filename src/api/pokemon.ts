@@ -3,7 +3,7 @@ import PokeAPI from "pokeapi-typescript";
 import ColorThief from "colorthief";
 import { properCase } from "../utils/fns";
 
-interface Pokemon extends Omit<IPokemon, "sprites"> {
+export interface Pokemon extends Omit<IPokemon, "sprites"> {
   sprites: {
     other: {
       "official-artwork": {
