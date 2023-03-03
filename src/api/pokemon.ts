@@ -14,7 +14,9 @@ export interface Pokemon extends Omit<IPokemon, "sprites"> {
 }
 
 export const getPokemon = async (id: number) => {
-  const pokemon: any = await PokeAPI.Pokemon.resolve(id);
+  const poke: any = await PokeAPI.Pokemon.resolve(id);
+
+  const pokemon = structuredClone(poke);
 
   pokemon.stats.forEach((stat: any) => {
     stat.base_stat = Math.round((stat.base_stat / 150) * 100);

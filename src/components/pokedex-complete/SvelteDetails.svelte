@@ -48,12 +48,12 @@ A counter written with Svelte
 	</div>
 
 	<div class="flex-1 relative">
-		<p class="text-sm font-semibold text-black/80">Type</p>
+		<p class="text-sm font-semibold text-black/80" style="margin-bottom: {$query.data ? "0px" : "2.625rem"};">Type</p>
 		<div class="flex flex-wrap mt-2 gap-2">
 		{ #if $query.data }
 			
 				{#each $query.data.types as type}
-					<span transition:fade class="px-4 py-1 border rounded-md font-medium" style="color: {color}; border-color: {color};">
+					<span class="px-4 py-1 border rounded-md font-medium" style="color: {color}; border-color: {color};">
 						{type}
 					</span>
 				{/each }
@@ -65,7 +65,7 @@ A counter written with Svelte
 		{ #if $query.data }
 			<div class="flex flex-wrap mt-2 gap-2">
 				{#each $query.data.weaknesses as weakness}
-					<span transition:fade class="px-4 py-1 border rounded-md font-medium" style="color: {color}; border-color: {color};">
+					<span class="px-4 py-1 border rounded-md font-medium" style="color: {color}; border-color: {color};">
 						{weakness}
 					</span>
 				{/each }
@@ -90,8 +90,8 @@ A counter written with Svelte
 			on:click={add}
 			class="text-black/80 hover:bg-black/5 w-8 h-8 flex justify-center items-center rounded-md"
 		>
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
 			
 		</button>
