@@ -15,9 +15,15 @@ export function SolidStats() {
 
   const statsQuery = createQuery(
     () => ({
-      queryKey: ["pokemon-stats", count()],
-      queryFn: () => getStats(count()),
+      queryKey: ["pokemon", count()],
+      queryFn: () => getPokemon(count()),
       placeholderData: (prev) => prev,
+      select(data) {
+        return data.stats.map((stat) => ({
+          label: stat.stat.name,
+          value: stat.base_stat,
+        }));
+      },
     }),
     () => client
   );
